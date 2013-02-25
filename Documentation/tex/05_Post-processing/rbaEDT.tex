@@ -1,0 +1,73 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaEDT} % (fold)
+\label{cha:rbaEDT} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaEDT_purpose}
+% A short description of the purpose of the function
+Calculate Early Decay Time (EDT) from decay curve.
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaEDT_syntax}
+% How is it called in MATLAB
+
+\texttt{[EDT,r2p,stdDev] = rbaEDT(h,t)}
+
+% section syntax (end)
+
+%\section{Algorithm} % (fold)
+%\label{sec:rbaEDT_algorithm}
+% (OPTIONAL) Which algorithm for calculation is used.
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaEDT_description}
+% Detailed description of the function
+
+EDT is defined in ISO-3382-1 and calculated from the slope of the integrated impulse response. The slope is determined from a linear regression of the inital 10~dB decay.
+
+\texttt{r2p} is the goodness-of-fit given by the correlation coefficient $1000\cdot(1-r^2)$.
+A correlation coefficient $1000\cdot(1-r^2) = 0$ corresponds to a perfect correlation between data and fit. The decay curve is non-linear for $1000\cdot(1-r^2) > 10$ according to ISO 3382-1.
+
+\texttt{stdDev} is the standard deviation of the difference between the linear regression line and the decay curve.
+% section description (end)
+
+%\section{Optional Input Arguments} % (fold)
+%\label{sec:rbaEDT_optional_input_arguments}
+
+% List of optional input arguments and a short description
+
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaEDT_example}
+% A short demo script using the function.
+
+\begin{lstlisting}[style=nonumbers]
+[h,fs] = wavread('ImpulseResponse.wav');
+t = 0:1/fs:length(h)/fs-1/fs;
+R = rbaSchroeder(h,fs);
+[EDT,r2p,stdDev] = rbaEDT(R,t);
+\end{lstlisting}
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaEDT_see_also}
+% Similar or related functions
+
+\texttt{\nameref{cha:rbaReverberationTime}},\quad \texttt{\nameref{cha:rbaSchroeder}},\quad \texttt{\nameref{cha:rbaCropIR}},\quad \texttt{\nameref{cha:rbaLundeby}}.
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaEDT_references}
+ISO 3382-1:2009
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

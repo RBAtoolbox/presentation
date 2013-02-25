@@ -1,0 +1,91 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaReverberationTime} % (fold)
+\label{cha:rbaReverberationTime} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaReverberationTime_purpose}
+% A short description of the purpose of the function
+Compute $T_{20}$, $T_{30}$ and $T_{60}$ from decay curves according to ISO 3382-1.
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaReverberationTime_syntax}
+% How is it called in MATLAB
+
+\texttt{[RT, r2p,dynRange,stdDev] = rbaReverberationTime(R,t,'best')}\\
+\texttt{[RT, r2p,dynRange,stdDev] = rbaReverberationTime(R,t,'all')}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaReverberationTime_algorithm}
+% (OPTIONAL) Which algorithm for calculation is used.
+The slope of the decay curves is determined from MATLAB's \texttt{polyfit} function in the intervals defined by $T_{60}$, $T_{30}$ and $T_{20}$.
+
+The correlation coefficient squared is given by
+\begin{equation}
+r^2 = \frac{\sum_{i=1}^n (L_i^{\text{fit}}-\bar{L}^{\text{data}})^2}{\sum_{i=1}^n (L_i^{\text{data}}-\bar{L}^{\text{data}})^2}
+\end{equation}
+where $\bar{L}^{\text{data}} = \frac{1}{n}\sum_{i=1}^{n}L_i^{data}$
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaReverberationTime_description}
+% Detailed description of the function
+Reverberation time is defined in ISO 3382-1 as the duration required for the space-averaged sound energy density in an enclosure to decrease by 60 dB after the source emission has stopped. This is calculated from the slope of decay curves by reverse-time integration of squared impulse responses, also known as Backward Schröder integration.
+The slope is determined from a linear regression based on the available dynamic range.
+
+\texttt{r2p} is the goodness-of-fit given by the correlation coefficient $1000\cdot(1-r^2)$.
+A correlation coefficient $1000\cdot(1-r^2) = 0$ corresponds to a perfect correlation between data and fit. The decay curve is non-linear for $1000\cdot(1-r^2) > 10$ according to ISO 3382-1.
+
+\texttt{dynRange} is the dynamic range of the decay curve in dB. If \texttt{R} is a matrix then \texttt{dynRange} is given for each column in \texttt{R}.
+
+\texttt{stdDev} is the standard deviation of the difference between the linear regression line and the decay curve.
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaReverberationTime_optional_input_arguments}
+% List of optional input arguments and a short description
+\begin{itemize}
+	\item[-] \texttt{'best'}: Output only the reverberation time ($T_{60}$,$T_{30}$,$T_{20}$) with the largest dynamic range.
+	\item[-] \texttt{'all'}: Output all available $T_{60}$,$T_{30}$,$T_{20}$ based on the dynamic range. The output is given in a matrix or vector based on the input.
+\end{itemize}
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaReverberationTime_example}
+% A short demo script using the function.
+
+\begin{lstlisting}[style=nonumbers]
+[h,fs] = wavread('ImpulseResponse.wav');
+t = 0:1/fs:length(h)/fs-1/fs;		% Construct time vector
+H = rbaIR2octBands(h,fs,63,8000,0);	% Filter h in octave bands from 63 Hz to 8000 Hz (without reverse filtering)
+R = rbaSchroeder(h,fs);		% Compute decay curves
+[RT, r2p,dynRange,stdDev] = rbaReverberationTime(R,t,'all')
+\end{lstlisting}
+If a dynamic range of 65 dB is available then $T_{60}$, $T_{30}$ and
+$T_{20}$ is computed. For instance,
+\begin{lstlisting}[style=nonumbers]
+RT =
+	5.196 7.447 7.376 5.968 4.976 4.308 3.344 2.349 1.414 0.849
+	5.126 7.147 7.476 5.948 4.956 4.368 3.144 2.249 1.214 0.949
+	5.296 6.447 7.676 5.948 4.476 4.208 3.944 2.149 1.814 0.747
+\end{lstlisting}
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaReverberationTime_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaCentreTime}}, \quad \texttt{\nameref{cha:rbaClarity}}, \quad \texttt{\nameref{cha:rbaDefinition}}, \quad \texttt{\nameref{cha:rbaEDT}}.
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaReverberationTime_references}
+ISO 3382-1:2009
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

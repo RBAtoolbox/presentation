@@ -1,0 +1,64 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaStartIR} % (fold)
+\label{cha:rbaStartIR} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaStartIR_purpose}
+
+% A short description of the purpose of the function
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaStartIR_syntax}
+
+% How is it called in MATLAB
+
+%\texttt{y = function_name(input, input2)}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaStartIR_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaStartIR_description}
+
+% Detailed description of the function
+
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaStartIR_optional_input_arguments}
+
+% List of optional input arguments and a short description
+
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaStartIR_example}
+
+% A short demo script using the function.
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaStartIR_see_also}
+
+% Similar or related functions
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaStartIR_references}
+
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

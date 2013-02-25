@@ -1,0 +1,54 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaLinearConv} % (fold)
+\label{cha:rbaConv} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaConv_purpose}
+A faster replacement of the built-in \texttt{conv}-function.\\
+The linear concolution is used, for signals, which are bounded in time. E.g. for auralization use, where an anechoic (or very dry) sound signal is convolved (linearly) with the impulse response of a room (simulated or measured).
+
+% A short description of the purpose of the function
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaConv_syntax}
+% How is it called in MATLAB
+\texttt{y = rbaLinearConv(f,h)}
+
+% section synopsis (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaConv_algorithm}
+% (OPTIONAL) Which algorithm for calculation is used.
+The function uses the fact that a convolution in the time domain is equal to a multiplication in the frequency domain. Each vector is zero-padded to the lowest power of 2, which is longer than $n$, the sum of the signals minus 1. This is done to ensure the fastest fourier transform calculation time obtainable, with the given data. The signal spectrums are multiplied:
+\begin{equation*}
+\mathcal{F}\{h_1 * h_2\} =  \mathcal{F}\{h_1\}\mathcal{F}\{h_2\}
+\end{equation*}
+And the inverse symmetric fourier transform is taken, and cut to length n, before returning the data.
+% section algorithm (end)
+
+\section{Example} % (fold)
+\label{sec:rbaConv_example}
+
+\begin{lstlisting}
+% load sound and impulse response
+[sig,fs] = wavread('spoken_sentence.wav');
+[rir] = wavread('room.wav');
+% create auralization by performing a linear convolution
+auralization = rbaLinearConv(sig,rir);
+% play the sound in the room
+soundsc(auralization,fs);
+\end{lstlisting}
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaConv_see_also}
+
+\texttt{rbaCircularConv}
+
+% section see_also (end)
+
+
+% chapter function_name (end)

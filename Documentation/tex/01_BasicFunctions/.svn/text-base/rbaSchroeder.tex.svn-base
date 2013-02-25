@@ -1,0 +1,80 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaSchroeder} % (fold)
+\label{cha:rbaSchroeder} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaSchroeder_purpose}
+% A short description of the purpose of the function
+Compute decay curves from Schröders backward integration method.
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaSchroeder_syntax}
+% How is it called in MATLAB
+\texttt{R = rbaSchroeder(h,fs,flag)}\\
+\texttt{R = rbaSchroeder(h,fs,flag,'Lundeby')}\\
+\texttt{R = rbaSchroeder(h,fs,flag,knee)}
+\begin{itemize}
+	\item[-] \texttt{flag = \{1,0\}}: Enables noise compensation.
+\end{itemize}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaSchroeder_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaSchroeder_description}
+% Detailed description of the function
+The decay curve
+\begin{align}
+	R(t) &= 10\cdot\log_{10}\left(\int_{\infty}^{t}h^2(t)\id(-\tau)\right)\\
+	R(t) &= 10\cdot\log_{10}\left(\int_{t_1}^t h^2(t)\id(-\tau)+\int_{t_1}^{\infty} h_{exp}^2(t)\id(-\tau)	\right)
+\end{align}
+The latter integral is an optional correction factor to minimize the influece of noise (enabled by setting \texttt{flag = 1}). It is calculted under the assumption of exponential decay of energy with the same slope as $h^2(t)$ between $t_0$ and $t_1$, where $t_0$ is the time corresponding to a level 10 dB higher than the level at $t_1$. The slope is calculated from the time-averaged energy decay and a linear least-squares fit is found to $y(t) = 10\cdot\log_{10}\left(h_{exp}^2(t)\right)$, with
+\begin{equation}
+	h_{exp}^2(t) = E_0\exp^{At}.
+\end{equation}
+The coefficients of the linear fit $y_{fit}(t) = at+b$ is connected to the exponential coefficients $E_0$ and $A$, by
+\begin{equation}
+	E_0 = 10^{b/10}\; ,\quad A = \ln\left(10^{a/10}\right)
+\end{equation}
+
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaSchroeder_optional_input_arguments}
+% List of optional input arguments and a short description
+\begin{itemize}
+	\item[-] \texttt{'Lundeby'}: Use Lundeby's method to calculate the knee-point where the exponential decay meets the noise floor (default).
+	 \item[-] \texttt{knee}: Index value of the knee-point found by e.g. a graphical approach.
+\end{itemize}
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaSchroeder_example}
+
+% A short demo script using the function.
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaSchroeder_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaLundeby}},\quad \texttt{\nameref{cha:rbaCropIR}}
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaSchroeder_references}
+
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

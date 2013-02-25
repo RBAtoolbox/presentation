@@ -1,0 +1,66 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaFilterBank} % (fold)
+\label{cha:rbaFilterBank} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaFilterBank_purpose}
+Calculate octave or 3rd-octave band filters according to the ANSI S1.11-2004. Note: The filters are only trustworthy for frequencies at and above 63 Hz at this time.
+% A short description of the purpose of the function
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaFilterBank_syntax}
+
+% How is it called in MATLAB
+%\texttt{y = function_name(input, input2)}
+\texttt{[B,A] = rbaFilterBank(BandsPerOctave,fs,cfmin,cfmax)}
+
+% section syntax (end)
+
+% \section{Algorithm} % (fold)
+% \label{sec:rbaFilterBank_algorithm}
+% % (OPTIONAL) Which algorithm for calculation is used.
+
+% % section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaFilterBank_description}
+% Detailed description of the function
+Calculates filter coefficients for octave or $1/3$-octave 3rd-order Butterworth bandpass filters. The function is used by \texttt{\nameref{cha:rbaIR2OctaveBands}} to filter impulse response.\\
+\\
+Generally \texttt{\nameref{cha:rbaIR2OctaveBands}} should be used to filter impulse response.
+
+
+% section description (end)
+
+% \section{Optional Input Arguments} % (fold)
+% \label{sec:rbaFilterBank_optional_input_arguments}
+
+% % List of optional input arguments and a short description
+
+% % section optional_input_arguments (end)
+
+% \section{Example} % (fold)
+% \label{sec:rbaFilterBank_example}
+
+% % A short demo script using the function.
+
+% % section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaFilterBank_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaIR2OctaveBands}}, \quad \texttt{\nameref{cha:rbaGetFreqs}}.
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaFilterBank_references}
+
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

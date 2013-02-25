@@ -1,0 +1,64 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaStrength} % (fold)
+\label{cha:rbaStrength} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaStrength_purpose}
+% A short description of the purpose of the function
+Calculate the sound strength $G$ in dB according to ISO 3382-1.
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaStrength_syntax}
+% How is it called in MATLAB
+
+\texttt{G = rbaStrength(h,h10,fs)}\\
+\texttt{G = rbaStrength(h,h10,fs,tInf)}
+% section syntax (end)
+
+\section{Description} % (fold)
+\label{sec:rbaStrength_description}
+% Detailed description of the function
+The sound strength is defined as the logarithmic ratio of the squared integrated impulse response to the direct sound energy recorded in the free field at a distance of 10 m from the sound source,
+\begin{equation}
+	G = 10\log\frac{\int_0^{\infty} h^2(t)\; dt}{\int_0^{\infty}h^2_{10}(t)\; dt} \text{dB}
+\end{equation}
+
+
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaStrength_optional_input_arguments}
+% List of optional input arguments and a short description
+\begin{itemize}
+	\item[-]\texttt{tInf} : The time in seconds that is greater than or equal to the point at which the decay curve has decreased by 30 dB. If \texttt{tInf} is larger than the duration of \texttt{h} it is set to \texttt{tInf = length(h)}.
+\end{itemize}
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaStrength_example}
+% A short demo script using the function.
+\begin{lstlisting}[style=nonumbers]
+[h,fs] = wavread('ImpulseResponse.wav');
+h10 = wavread('ImpulseResponseAt10m.wav');
+G = rbaStrength(h,h10,fs);
+\end{lstlisting}
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaStrength_see_also}
+
+% Similar or related functions
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaStrength_references}
+
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

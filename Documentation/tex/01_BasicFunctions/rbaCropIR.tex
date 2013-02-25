@@ -1,0 +1,67 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaCropIR} % (fold)
+\label{cha:rbaCropIR} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaCropIR_purpose}
+% A short description of the purpose of the function
+Crop impulse response to remove onset and noise.
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaCropIR_syntax}
+
+% How is it called in MATLAB
+
+\texttt{[hCrop,t,Onset,knee] = rbaCropIR(h,fs)}\\
+\texttt{[hCrop,t,Onset,knee] = rbaCropIR(h,fs,'onset')}\\
+\texttt{[hCrop,t,Onset,knee] = rbaCropIR(h,fs,'tight')}\\
+% section syntax (end)
+
+\section{Description} % (fold)
+\label{sec:rbaCropIR_description}
+% Detailed description of the function
+Impulse responses need to be cropped in order to produce proper results when computing parameters such as \texttt{\nameref{cha:rbaReverberationTime}}. ISO 3382-1 provides a procedure to determine the onset of a broadband impulse response: The onset is the point where the impulse response rises significantly above the background noise but is more than 20 dB below the maximum.
+
+The knee-point where the decay meets the noise floor can be determined by Lundeby's method.
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaCropIR_optional_input_arguments}
+% List of optional input arguments and a short description
+\begin{itemize}
+	\item[-] \texttt{'onset'}: Crop only onset
+	\item[-] \texttt{'tight'}: Crop onset and noise by Lundeby's method
+\end{itemize}
+
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaCropIR_example}
+% A short demo script using the function.
+
+\begin{lstlisting}[style=nonumbers]
+[h,fs] = wavread('ImpulseResponse.wav');
+[hCrop,t] = rbaCropIR(h,fs,'onset');
+\end{lstlisting}
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaCropIR_see_also}
+% Similar or related functions
+
+\texttt{\nameref{cha:rbaLundeby}},\quad \texttt{\nameref{cha:rbaReverberationTime}}
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaCropIR_references}
+ISO 3382-1.
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

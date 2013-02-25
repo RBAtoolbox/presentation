@@ -1,0 +1,78 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaLundeby} % (fold)
+\label{cha:rbaLundeby} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaLundeby_purpose}
+% A short description of the purpose of the function
+Determine the sample (knee-point) at which the sound decay of IR meets the noise-floor.
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaLundeby_syntax}
+% How is it called in MATLAB
+%\texttt{y = function_name(input, input2)}
+
+\texttt{[knee, rmsNoise] = rbaLundeby(h,fs)}\\
+\texttt{[knee, rmsNoise] = rbaLundeby(h,fs,maxIter)}\\
+\texttt{[knee, rmsNoise] = rbaLundeby(h,fs,maxIter,avgTime)}\\
+\texttt{[knee, rmsNoise] = rbaLundeby(h,fs,maxIter,avgTime,noiseHeadRoom)}\\
+\texttt{[knee, rmsNoise] = rbaLundeby(h,fs,maxIter,avgTime,noiseHeadRoom,dynRange)}
+
+Note that the best results are obtained if the impulse response \texttt{h} has been cropped at the onset.
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaLundeby_algorithm}
+% (OPTIONAL) Which algorithm for calculation is used.
+This function implements Lundeby's method to determine the point where the decay curve meets the noise floor. The algorithm is described in Lundeby's original paper and a newly published Convention paper (see references).
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaLundeby_description}
+% Detailed description of the function
+Lundeby's methods determines the knee-point at which the sound decay of an impulse response meets the noise floor. The algorithm show fast convergence and generally produce stable results. The optional input arguments can be set by the user if the default values does not provide convergence.
+
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaLundeby_optional_input_arguments}
+
+\begin{itemize}
+	\item[-] \texttt{maxIter} is the maximum number of iterations (default = 5)
+	\item[-] \texttt{avgTime} is the time averaging in seconds (default = 50ms). Longer intervals are better for lower frequencies
+	\item[-] \texttt{noiseHeadRoom} Interval in dB above noise level to be used for fitting curve (default = 10 dB)
+	\item[-] \texttt{dynRange} Dynamic range in dB to be used in calculating fit. Larger ranges are better if impulse response allows it (default = 20 dB)
+\end{itemize}
+
+% % List of optional input arguments and a short description
+
+% % section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaLundeby_example}
+% A short demo script using the function.
+\todo{Lundeby example}
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaLundeby_see_also}
+% Similar or related functions
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaLundeby_references}
+Lundeby, A, T E Vigran, H Bietz, and M Vorlander. 
+\emph{Uncertainties of Measurements in Room Acoustics.} Acta Acustica United with Acustica 81 (4): 344–355. (1995)
+
+Antsalo, P, A Makivirta, V Valimaki, T Peltonen, and M Karjalainen.
+\emph{Estimation of Modal Decay Parameters From Noisy Response Measurements.} Convention paper. (2012)
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

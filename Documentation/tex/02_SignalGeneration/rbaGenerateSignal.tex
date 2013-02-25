@@ -1,0 +1,95 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaGenerateSignal} % (fold)
+\label{cha:rbaGenerateSignal} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaGenerateSignal_purpose}
+% A short description of the purpose of the function
+Generate measurement signal.
+
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaGenerateSignal_syntax}
+% How is it called in MATLAB
+
+%\texttt{y = function_name(input, input2)}
+\texttt{[y,t] = rbaGenerateSignal('logsin',fs,f1,f2,length\_sig[,zero\_pad,amp,phase])} \\
+\texttt{[y,t] = rbaGenerateSignal('linsin',fs,f1,f2,length\_sig[,zero\_pad,amp,phase])} \\
+\texttt{[y,t] = rbaGenerateSignal('sin',fs,f0,length\_sig[,amp,phase])} \\
+\texttt{[y,t] = rbaGenerateSignal('mls',fs, n[, amp, zero\_pad, offset])} \\
+
+% section syntax (end)
+
+% \section{Algorithm} % (fold)
+% \label{sec:rbaGenerateSignal_algorithm}
+
+% % (OPTIONAL) Which algorithm for calculation is used.
+
+% % section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaGenerateSignal_description}
+% Detailed description of the function
+\texttt{rbaGenerateSignal} is used to generate the measurement signal. The available types of signal are
+\begin{itemize}
+    \item Logarithmic sine sweep
+    \item Linear sine sweep
+    \item Single sine tone
+    \item Maximum-length sequence
+\end{itemize}
+
+Each signal type requires different input arguments. There is no time-window applied to the generated signal. If af window is needed, e.g. for real world measurements using sweep signal, use \texttt{sweepwin}.\\
+
+When applying a time-window using \texttt{sweepwin} it is necesarry to generate a sweep with a wider frequency range than the desired measurement range.
+
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaGenerateSignal_optional_input_arguments}
+
+% List of optional input arguments and a short description
+\begin{itemize}
+    \item[-] \texttt{zero\_pad}: duration in seconds, of silence inserted after the generated signal.
+    \item[-] \texttt{amp}: the default amplitude of each signal is $1$. Use this argument if another is needed.
+    \item[-] (Sweep)\texttt{phase}: Initial phase in radians of the signal. Default is $0$.
+    \item[-] (MLS)\texttt{offset}: Needed offset in MLS sequence.
+\end{itemize}
+
+
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaGenerateSignal_example}
+
+% A short demo script using the function.
+
+\begin{lstlisting}
+% Generate logarithmic sine sweep from 100 Hz to 10 kHz of length 5 s
+sig_type = 'logsin';
+fs = 48e3;
+f1 = 100;
+f2 = 10e3;
+length_sig = 5;
+[y, t] = rbaGenerateSignal(sig_type, fs, f1, f2, length_sig);
+\end{lstlisting}
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaGenerateSignal_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaMeasurement}}
+%\texttt{\nameref{cha:sweepwin}}
+% section see_also (end)
+
+% \section{References} % (fold)
+% \label{sec:rbaGenerateSignal_references}
+% % \usepackage{chapterbib}
+
+
+% % section references (end)
+
+% chapter function_name (end)

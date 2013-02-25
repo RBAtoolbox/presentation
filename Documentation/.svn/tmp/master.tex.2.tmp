@@ -1,0 +1,123 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Report template %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt,article, oneside]{memoir}
+
+\usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%
+%%%% INPUT INFO %%%%
+%%%%%%%%%%%%%%%%%%%%
+
+\def\ReportAuthor{s062050 ,s072101, s082312}  % Forfatter
+\def\CourseName{} % Kursus
+\def\ReportTitle{RABAT Documentation}        % Titel
+\def\Subtitle{Room and Building Acoustics Toolbox} % Undertitel
+\def\DatePublished{21/12-2012}                   % Dato
+
+\def\ReportLanguage{en} %OBSOBS compile document for English
+%\def\ReportLanguage{da} %OBSOBS compile document for Danish
+
+\def\danishlang{da}
+
+%%%%%%%%%%%%%%%%%%%%
+%%%% Load Style %%%%
+%%%%%%%%%%%%%%%%%%%%
+%
+\usepackage{../texdef/reportdef}
+\fixpdflayout
+
+%%%%%%%%%%%%%%%%%
+%%%% RAPPORT %%%%
+%%%%%%%%%%%%%%%%%
+
+% For small frontpage header, use header.tex
+
+\begin{document}
+
+%% TODO LIST % Remove when final
+\listoftodos
+\cleardoublepage
+
+%%% FORSIDE %%%
+  \input{../texdef/frontpage.tex}  % Full page frontpage, use \frontmatter
+
+%%% INDHOLDSFORTEGNELSE %%%
+\frontmatter
+  %\clearpage
+  %\tableofcontents*           % indholdsfortegnelse
+  %\listoffigures*             % figurliste
+  %\listoftables*              % tabelliste
+
+%%% RAPPORTINDHOLD %%%
+\mainmatter
+   %\input{../texdef/header.tex}   % Small frontpage header, use header.tex
+
+    % Der skal muligvis bruges \include istedet
+  	\input{tex/01_intro}
+  	\newpage
+    \input{tex/02_functionoverview.tex} \newpage
+    \input{tex/01_BasicFunctions/rbaLinConv.tex} \newpage %ok
+    \input{tex/01_BasicFunctions/rbaCirculConv.tex} \newpage %ok
+    \input{tex/01_BasicFunctions/rbaCropIR.tex} \newpage %ok
+    \input{tex/01_BasicFunctions/rbaCrossCorr.tex} \newpage %ok
+	\input{tex/01_BasicFunctions/rbaSchroeder.tex} \newpage %ok
+	%\input{tex/01_BasicFunctions/rbaStartIR.tex} \newpage
+    %\input{tex/01_BasicFunctions/rbaStartUp.tex} \newpage
+
+  	\input{tex/02_SignalGeneration/rbaGenerateSignal.tex} \newpage %ok
+<<<<<<< .mine
+    %\input{tex/02_SignalGeneration/sweepwin.tex} \newpage %ok
+=======
+    % \input{tex/02_SignalGeneration/sweepwin.tex} \newpage %ok
+>>>>>>> .r204
+
+  	\input{tex/03_Measurement/rbaMeasurement.tex} \newpage
+
+    \input{tex/04_Deconvolution/mlsdeconv.tex}  \newpage
+    \input{tex/04_Deconvolution/sweepdeconv.tex} \newpage
+
+    %\input{tex/05_Post-processing/rbaBassRatio.tex} \newpage
+    \input{tex/05_Post-processing/rbaCentreTime.tex} \newpage %ok
+    \input{tex/05_Post-processing/rbaClarity.tex} \newpage %ok
+    \input{tex/05_Post-processing/rbaDefinition.tex} \newpage %ok
+    %\input{tex/05_Post-processing/rbaEarlyLateralEnergy.tex} \newpage
+    %\input{tex/05_Post-processing/rbaEarlySupport.tex} \newpage
+    \input{tex/05_Post-processing/rbaEDT.tex} \newpage %ok
+    \input{tex/05_Post-processing/rbaIR2OctaveBands.tex} \newpage %ok
+    %\input{tex/05_Post-processing/rbaIR2ThirdOctBands.tex} \newpage
+    %\input{tex/05_Post-processing/rbaLateLateralEnergy.tex} \newpage
+    %\input{tex/05_Post-processing/rbaLateSupport.tex} \newpage
+    \input{tex/05_Post-processing/rbaLundeby.tex} \newpage %ok
+    \input{tex/05_Post-processing/rbaReverberationtime.tex} \newpage %ok
+    \input{tex/05_Post-processing/rbaFilterBank.tex} \newpage
+    \input{tex/05_Post-processing/rbaGetFreqs.tex} \newpage
+    \input{tex/05_Post-processing/rbaScaleModel.tex} \newpage
+    %\input{tex/05_Post-processing/rbaStrength.tex} \newpage
+
+    % FilterBank
+    % GetFreqs
+    % ScaleModel
+
+
+
+
+%%% BIBLIOGRAPHY %%%
+%  \newpage
+%  \bibliographystyle{plain}
+  %\nocite{*}
+%  \bibliography{../texdef/bibbase}
+
+%%% APPENDIX %%%
+%  \newpage
+%  \appendix
+  %\input{app/whatever.tex}
+%  \input{tex/app}
+%%% BACKMATTER %%%
+  %\backmatter
+  %Add Backpage
+
+\end{document}
+
+%%%% EOF %%%%

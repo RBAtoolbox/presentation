@@ -1,0 +1,35 @@
+%!TEX root = ../../master.tex
+
+\chapter{sweepdeconv} % (fold)
+\label{cha:sweepdeconv} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:sweepdeconv_purpose}
+% A short description of the purpose of the function
+Performs a linear deconvolution of input and output of a system. This can be a room measurement, being correlated with the excitation signal, which ends up in the room impulse response.
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:sweepdeconv_syntax}
+
+% How is it called in MATLAB
+\texttt{[h,t] = sweepdeconv(x,y,f1,f2,fs)}
+
+% section syntax (end)
+
+\section{Description} % (fold)
+\label{sec:sweepdeconv_description}
+
+A deconvolution is basically a cross correlation between measurement and excitation signal. When doing measurements with logarithmic sweeps, the linear deconvolution should be used, since the sweep response will have a decay, that longens the signal.
+
+% section description (end)
+
+\section{See Also} % (fold)
+\label{sec:sweepdeconv_see_also}
+
+% Similar or related functions
+\texttt{mlsdeconv}, \texttt{rbaLinearConv}, \texttt{rbaCircularConv}
+% section see_also (end)
+\underline{}
+
+% chapter function_name (end)

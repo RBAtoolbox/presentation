@@ -1,0 +1,64 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaMeasurement} % (fold)
+\label{cha:rbaMeasurement} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaMeasurement_purpose}
+% A short description of the purpose of the function
+Perform measurement.
+This function requires PsychToolbox \url{http://psychtoolbox.org/HomePage}
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaMeasurement_syntax}
+
+\texttt{y = rbaMeasurement(signal, fs, N, estimatedRT)}
+
+% section syntax (end)
+
+\section{Description} % (fold)
+\label{sec:rbaMeasurement_description}
+
+Connections are established to the default input and output of the computers operating system, and a system or room response is recorded. The input \texttt{signal} is used to excite the room. The measurements are averaged over \texttt{N} recordings.\\
+Each excitation is followed by a quiet time of \texttt{estimatedRT} seconds. This method is called a transient measurement, and while it takes slightly longer, than with a sound field build-up, it is very reliable and produces robust results. \texttt{estimatedRT} should be an estimate of the reverberation time.
+
+% section description (end)
+
+\section{Example} % (fold)
+\label{sec:rbaMeasurement_example}
+
+\begin{lstlisting}
+% Generate logarithmic sine sweep
+fs = 48000;         % Sampling frequency
+f1 = 1000;           % Lower frequency
+f2 = 8000;          % Upper frequency
+length_sig = 5;     % Duration of sweep in seconds
+
+[sweep,t] = rbaGenerateSignal('logsin',fs,f1,f2,length_sig);
+
+% Start measurement
+RT = 1;             % Estimated reverberation time of room
+N = 4;              % number of sweeps to average over
+transient = 0;
+y = rbaMeasurement(sweep,fs,N,RT,transient);
+% Compute impulse response
+h = sweepdeconv(sweep,y,f1,f2,fs);
+
+figure('Name','Spectrogram','Position',[0 400 400 400])
+specgram(y,min(256,length(y)),fs)
+figure('Name','Impulse response','Position',[420 400 400 400])
+plot(h)
+\end{lstlisting}
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaMeasurement_see_also}
+
+\texttt{\nameref{cha:rbaGenerateSignal}}
+
+% section see_also (end)
+
+% chapter function_name (end)

@@ -1,0 +1,70 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaLinearConv} % (fold)
+\label{cha:rbaLinearConv} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaLinearConv_purpose}
+A faster replacement of the built-in function for linear convolution.
+
+% A short description of the purpose of the function
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaLinearConv_syntax}
+% How is it called in MATLAB
+\texttt{y = rbaLinearConv(f,h)}
+
+% section synopsis (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaLinearConv_algorithm}
+% (OPTIONAL) Which algorithm for calculation is used.
+The function uses that a convolution in the time domain is equal to a multiplication in the frequency domain.
+\begin{equation*}
+\mathcal{F}\{h_1 * h_2\} =  \mathcal{F}\{h_1\}\mathcal{F}\{h_2\}
+\end{equation*}
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaLinearConv_description}
+% Detailed description of the function
+This function does convolution faster than the built-in matlab function \texttt{conv}. It can be used to convolve an impulse response with a dry signal to create auralizations.\\
+\todo{Linear vs. Circular}
+
+The output of the function is not normalized.
+
+
+% section description (end)
+
+% \section{Optional Input Arguments} % (fold)
+% \label{sec:rbaLinearConv_optional_input_arguments}
+
+% % List of optional input arguments and a short description
+
+% % section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaLinearConv_example}
+% A short demo script using the function.
+\begin{lstlisting}
+
+\end{lstlisting}
+\todo{rbaLinearConv Example?}
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaLinearConv_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaCircularConv}}
+
+% section see_also (end)
+
+% \section{References} % (fold)
+% \label{sec:rbaLinearConv_references}
+
+% % section references (end)
+
+% chapter function_name (end)

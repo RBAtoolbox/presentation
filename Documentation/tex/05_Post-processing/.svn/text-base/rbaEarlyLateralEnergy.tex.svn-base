@@ -1,0 +1,74 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaEarlyLateralEnergy} % (fold)
+\label{cha:rbaEarlyLateralEnergy} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaEarlyLateralEnergy_purpose}
+% A short description of the purpose of the function
+Calculate early late energy according to ISO-3382-1
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaEarlyLateralEnergy_syntax}
+
+% How is it called in MATLAB
+
+%\texttt{y = function_name(input, input2)}
+\texttt{LF = rbaEarlyLateralEnergy(pL, p, fs)}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaEarlyLateralEnergy_algorithm}
+% (OPTIONAL) Which algorithm for calculation is used.
+The function uses the calculation of the early lateral energy.
+
+\begin{equation*}
+J_{LF} = \frac{\int_{0,005}^{0,080} p_L^2(t) \mathrm{d}t}{\int_{0}^{0,080} p^2(t) \mathrm{d}t}
+\end{equation*}
+
+where
+\begin{itemize}
+    \item[$p_L(t)$] is the instaneous sound pressure of the impulse response, measured with a figure-of-eight microphone.
+    \item[$p(t)$] is the instaneous sound pressure of the impulse response, measured at the measurement point.
+\end{itemize}
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaEarlyLateralEnergy_description}
+% Detailed description of the function
+
+
+% section description (end)
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaEarlyLateralEnergy_optional_input_arguments}
+
+% List of optional input arguments and a short description
+
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaEarlyLateralEnergy_example}
+
+% A short demo script using the function.
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaEarlyLateralEnergy_see_also}
+
+% Similar or related functions
+\texttt{rbaLateLateralEnergy}
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaEarlyLateralEnergy_references}
+
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

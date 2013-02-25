@@ -1,0 +1,48 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaDefinition} % (fold)
+\label{cha:rbaDefinition} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaDefinition_purpose}
+% A short description of the purpose of the function
+Calculate definition $D_50$ from impulse response, according to ISO-3382-1:2009.
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaDefinition_syntax}
+% How is it called in MATLAB
+%\texttt{y = function_name(input, input2)}
+\texttt{D = rbaDefinition(h,fs,time)}
+
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaDefinition_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+The definition parameter is calculated according to ISO-3382-1
+\begin{equation}
+	D_{t_e} = \frac{\int_{0}^{t_e} h^2(t) \,\mathrm{d} t}{\int_{0}^{\infty} h^2(t) \,\mathrm{d} t}
+\end{equation}
+where $h(t)$ is the room implulse response of interest.
+% section algorithm (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaDefinition_see_also}
+
+% Similar or related functions
+\texttt{\nameref{cha:rbaCentreTime}}, \quad \texttt{\nameref{cha:rbaClarity}}, \quad \texttt{\nameref{cha:rbaEDT}}, \quad \texttt{\nameref{cha:rbaReverberationTime}}.
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaDefinition_references}
+
+% \usepackage{chapterbib}
+ISO 3382-1:2009
+% section references (end)
+
+% chapter function_name (end)

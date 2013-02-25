@@ -1,0 +1,50 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaBassRatio} % (fold)
+\label{cha:rbaBassRatio} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaBassRatio_purpose}
+
+Computes the Bass Ratio of a given room impulse response.
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaBassRatio_syntax}
+
+% How is it called in MATLAB
+
+\texttt{BR = rbaBassRatio(h,fs)}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaBassRatio_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+The Bass Ratio is calculated as the ratio between reverberation times of low and high frequency octave bands. Note: 250~Hz band omitted. 
+\begin{equation}
+	\text{BR} = \frac{T_{63}+T_{125}}{T_{500}+T_{1000}+T_{2000}}
+\end{equation}
+% section algorithm (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaBassRatio_see_also}
+
+% Similar or related functions
+
+\texttt{rbaCentreTime}, \texttt{rbaClarity}, \texttt{rbaDefinition}, \texttt{rbaEDT}, \texttt{rbaReverberationTime}, \texttt{rbaStrength}
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaBassRatio_references}
+
+Niels Werner Adelman-Larsen, Eric R. Thompson and Anders Christian Gade
+Suitable reverberation times for halls for rock and pop music\\
+Journal of the Acoustical Society of America, 2010, Vol. 127, nr. 1, pp. 247-255
+
+
+% section references (end)
+
+% chapter function_name (end)

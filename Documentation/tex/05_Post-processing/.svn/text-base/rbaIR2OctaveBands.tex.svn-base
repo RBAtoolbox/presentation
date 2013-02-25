@@ -1,0 +1,78 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaIR2OctaveBands} % (fold)
+\label{cha:rbaIR2OctaveBands} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaIR2OctaveBands_purpose}
+
+% A short description of the purpose of the function
+Filter impulse response into 1-octave or $1/3$-octave bands
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaIR2OctaveBands_syntax}
+
+% How is it called in MATLAB
+
+%\texttt{y = function_name(input, input2)}
+  \texttt{H = rbaIR2OctaveBands(h, fs, cfmin, cfmax)} \\
+  \texttt{H = rbaIR2OctaveBands(h, fs, cfmin, cfmax, bandsPerOctave)} \\
+  \texttt{H = rbaIR2OctaveBands(h, fs, cfmin, cfmax, bandsPerOctave, reverse)}
+% section syntax (end)
+
+% \section{Algorithm} % (fold)
+% \label{sec:rbaIR2OctaveBands_algorithm}
+
+% % (OPTIONAL) Which algorithm for calculation is used.
+
+% % section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaIR2OctaveBands_description}
+% Detailed description of the function
+The room acoustic parameters are often computed in octave or third-octave frequency bands. This function will return a matrix \texttt{H} containing the filtered impulse response for each octave bands with center frequencies in the range \texttt{cfmin;cfmax]}.
+\\
+The function uses fourth-order Butterworth filters with cut-off frequencies at the edges of the band. This function requires the \emph{Signal Processing Toolbox} included with most versions of \emph{MATLAB}, but also available from the \emph{MathWorks} website.\\
+The function includes the option to filter the time-reversed impulse response. This can be done to minimize the influence of the filter on the decay-curve as described in \cite{} and \cite{}.
+
+
+
+% section description (end)
+
+% \section{Optional Input Arguments} % (fold)
+% \label{sec:rbaIR2OctaveBands_optional_input_arguments}
+% % List of optional input arguments and a short description
+
+% % section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaIR2OctaveBands_example}
+% A short demo script using the function.
+\begin{lstlisting}
+[h, fs] = wavread('measured_impulse_response');
+cfmin = 63;
+cfmax = 4000;
+H = rbaIR2OctaveBands(h, fs, cfmin, cfmax);
+\end{lstlisting}
+
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaIR2OctaveBands_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaFilterBank}},\quad \texttt{\nameref{cha:rbaGetFreqs}}%,\quad \texttt{\nameref{cha:rbaGetFreqs}}
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaIR2OctaveBands_references}
+Jacobsen, F. (..). A Note on Acoustic Decay Measurement, 1–8.\\
+Jacobsen, F. (..). Time-reversed decay Measurement. (F. Jacobsen, Ed.), 1–4.\\
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

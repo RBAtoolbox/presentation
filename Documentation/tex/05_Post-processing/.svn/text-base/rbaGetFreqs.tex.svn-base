@@ -1,0 +1,69 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaGetFreqs} % (fold)
+\label{cha:rbaGetFreqs} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaGetFreqs_purpose}
+% A short description of the purpose of the function
+Return standardized octave band center frequencies vector for plotting purposes in acoustics.
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaGetFreqs_syntax}
+
+% How is it called in MATLAB
+
+%\texttt{y = function_name(input, input2)}
+\texttt{freqs = rbaGetFreqs(cfmin,cfmax,BandsPerOctave)}
+% section syntax (end)
+
+% \section{Algorithm} % (fold)
+% \label{sec:rbaGetFreqs_algorithm}
+
+% % (OPTIONAL) Which algorithm for calculation is used.
+
+% % section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaGetFreqs_description}
+% Detailed description of the function
+\texttt{cfmin} and \texttt{cfmax} determine the range and \texttt{BandsPerOctave} should be \texttt{1} or \texttt{3}.
+
+% section description (end)
+
+% \section{Optional Input Arguments} % (fold)
+% \label{sec:rbaGetFreqs_optional_input_arguments}
+
+% % List of optional input arguments and a short description
+
+% % section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaGetFreqs_example}
+% A short demo script using the function.
+\begin{lstlisting}
+cfmin = 63;
+cfmax = 4e3;
+BandsPerOctave = 1;
+f = rbaGetFreqs(cfmin, cfmax);
+% Plot reverberation time for each octave-band
+plot(f, RT)
+\end{lstlisting}
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaGetFreqs_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaFilterBank}},\quad \texttt{\nameref{cha:rbaIR2OctaveBands}}.
+% section see_also (end)
+
+% \section{References} % (fold)
+% \label{sec:rbaGetFreqs_references}
+
+% % \usepackage{chapterbib}
+
+% % section references (end)
+
+% chapter function_name (end)

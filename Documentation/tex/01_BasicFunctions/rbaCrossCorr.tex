@@ -1,0 +1,73 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaCrossCorr} % (fold)
+\label{cha:rbaCrossCorr} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaCrossCorr_purpose}
+
+% A short description of the purpose of the function
+Calculate cross correlation
+
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaCrossCorr_syntax}
+
+% How is it called in MATLAB
+
+\texttt{[c, lags] = rbaCrossCorr(f, g)}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaCrossCorr_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+The definition of cross correlation is
+\begin{equation*}
+    (f \star g) [n] = \sum_{m=-\infty}^{\infty} f^*[m]g[n+m]
+\end{equation*}
+
+The function makes use of the following: That a convolution in time, is a multiplication in frequency.
+
+\begin{equation*}
+     \mathcal{F}\{ f \star g\} = \mathcal{F}\{ f\} \mathcal{F}\{ g \}
+\end{equation*}
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaCrossCorr_description}
+    Since Matlabs built-in cross correlation sends calculations to
+    \texttt{fftfilt}, when \texttt{length(f)>=10*length(h)}, and \texttt{fftfilt} does not support
+    longer signals than $2^{20}=1048576$, the need for a more robust
+    implementation was born.
+    This function is written with the purpose of determining the exact
+    position of a single sweep response in a room acoustic measurement,
+    which consists of the response of several sweeps.
+    The cross correlation searches for patterns, similar to h, in
+    signal f. It is closely related to the convolution function.\\
+    \\
+    \texttt{c} is the result of the cross-correlation for $n$
+    \texttt{lags} is a vector containing the lags $n$
+
+
+% section description (end)
+
+% \section{Optional Input Arguments} % (fold)
+% \label{sec:rbaCrossCorr_optional_input_arguments}
+
+% % List of optional input arguments and a short description
+
+% % section optional_input_arguments (end)
+
+
+\section{See Also} % (fold)
+\label{sec:rbaCrossCorr_see_also}
+% Similar or related functions
+\texttt{\nameref{cha:rbaLinearConv}}, \quad \texttt{\nameref{cha:rbaCircularConv}}.
+% section see_also (end)
+
+% chapter function_name (end)

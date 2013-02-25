@@ -1,0 +1,48 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaCentreTime} % (fold)
+\label{cha:rbaCentreTime} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaCentreTime_purpose}
+
+% A short description of the purpose of the function
+Calculates the room acoustic parameter Centre Time, according to ISO 3382-1:2009.
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaCentreTime_syntax}
+
+% How is it called in MATLAB
+
+\texttt{Ts = rbaCentreTime(h,fs)}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaCentreTime_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+The parameter Centre Time is defined as follows:
+\begin{equation}
+	T_S = \frac{\int_{0}^{\infty} t h^(t) \,\mathrm{d} t}{\int_{0}^{\infty} h^2 \,\mathrm{d} t}
+\end{equation}
+where $h(t)$ is the room impulse response of interest.
+% section algorithm (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaCentreTime_see_also}
+
+% Similar or related functions
+\texttt{\nameref{cha:rbaClarity}},\quad \texttt{\nameref{cha:rbaDefinition}},\quad \texttt{\nameref{cha:rbaEDT}},\quad \texttt{\nameref{cha:rbaReverberationTime}}.
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaCentreTime_references}
+
+% \usepackage{chapterbib}
+ISO 3382-1:2009
+
+% section references (end)
+
+% chapter function_name (end)

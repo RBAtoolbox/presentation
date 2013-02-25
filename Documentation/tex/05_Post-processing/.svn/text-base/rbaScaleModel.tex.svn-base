@@ -1,0 +1,98 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaScaleModel} % (fold)
+\label{cha:rbaScaleModel} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaScaleModel_purpose}
+Convert impulse response measured in a scale model to full-scale impulse response. Note that this function is still under development and further testing is
+needed in order to verify its functionality.
+% A short description of the purpose of the function
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaScaleModel_syntax}
+\texttt{[hFull,tFull] = rbaScaleModel(hModel,fsModel,K,fFull,T,hr,Pa)}
+\begin{itemize}
+	\item[-]\texttt{hModel} is the impulse response measured in a $1/K$ scale model
+	\item[-]\texttt{fsModel} is the recording sampling rate
+	\item[-]\texttt{K} is the scale factor, e.g. 10 or 20
+	\item[-]\texttt{fFull} is the full-scale octave bands of interest
+	\item[-]\texttt{T} is the temperature in degrees Celcius. Vector containing model values and reference in full-scale.
+	\item[-]\texttt{hr} is the relative humidity in \%. Vector containing model values and reference in full-scale.
+	\item[-]\texttt{Pa} is the ambient atmospheric pressure in kPa. Vector containing model values and reference in full-scale.
+\end{itemize}
+% How is it called in MATLAB
+
+%\texttt{y = function_name(input, input2)}
+
+% section syntax (end)
+
+%\section{Algorithm} % (fold)
+%\label{sec:rbaScaleModel_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+
+% section algorithm (end)
+
+\section{Description} % (fold)
+\label{sec:rbaScaleModel_description}
+\texttt{rbaScaleModel} scales length, time, frequency, sampling rate and calculate the full-scale impulse response. The impulse response measured in a scale model is attenuated (due to sound absorption in air) more at high frequencies. This function calculates the discrepancy between air absorption in the scaled frequency intervals.
+
+Sound absorption in air depends on frequency, temperature, humidity, atmospheric pressure and hence distance of propagation. It follows that the conversion of an impulse response to full scale requires taking the absorption discrepancy into account. If $m_{mod}$ denotes the air attenuation coefficent in the scale model and $m_{full}$ denotes the full scale, then the discrepancy can be determined by applying a time dependent gain factor $H_n(t)$ to the octave band filtered impulse response around $f_n$
+\begin{align}
+	H_n(t) &= 10^{b_n t/20}\\
+	b_n &= m_{mod}(10 f_n)c' - K m_{full}(f_n)c
+\end{align}
+where $c'$ and $c$ is the speed of sound in the measurement and reference, respectively. 
+% Detailed description of the function
+
+% section description (end)
+
+\section{Optional Input Arguments} % (fold)
+\label{sec:rbaScaleModel_optional_input_arguments}
+
+% List of optional input arguments and a short description
+
+% section optional_input_arguments (end)
+
+\section{Example} % (fold)
+\label{sec:rbaScaleModel_example}
+% A short demo script using the function.
+\begin{lstlisting}[style=nonumbers]
+[hMod,fsMod] = wavread('modelIR.wav');
+K = 10;	% Scale factor
+fFull = rbaGetFreqs(125,4000,1);	% Octave bands of interest
+fMod = fRef*K;	% Scale to model frequencies
+% Full scale ambience (reference values)
+TFull = 25;	% Temperature
+hrFull = 40;	% Relative humidity
+PaFull = 101.325;	% Atmospheric pressure
+% Model ambience (measured values)
+TMod = 17;	% Temperature
+hrMod = 40;	% Relative humidity
+PaMod = 101.325;	% Atmospheric pressure
+[hFull,tFull] = rbaScaleModel(hMod,fsMod,K,fFull,[TFull TMod],...
+[hrFull hrMod],[PaFull PaMod]);
+\end{lstlisting}
+
+% section example (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaScaleModel_see_also}
+\texttt{\nameref{cha:rbaGetFreqs}}
+% Similar or related functions
+
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaScaleModel_references}
+ISO 9613-1.
+
+Boone, M M, and E Braat-Eggen. \emph{Room Acoustic Parameters in a Physical Scale Model of the New Music Centre in Eindhoven: Measurement Method and Results.}. Applied Acoustics 42 (1): 13–28. (1994)
+% \usepackage{chapterbib}
+
+% section references (end)
+
+% chapter function_name (end)

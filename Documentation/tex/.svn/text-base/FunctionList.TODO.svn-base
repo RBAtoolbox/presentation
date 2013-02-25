@@ -1,0 +1,36 @@
+Basic Functions:
+ - rbaBackInt
+ - rbaConv
+ - rbaCropIR
+ - rbaCrossCorr
+ - rbaStartUp
+
+Signal Generation:
+ - rbaGenerateSignal @decrepated
+ - rbaGenerateSignalWin
+ - rbaMls
+
+Measurement:
+ - rbaMeasurement
+ - rbaMeasurementOld @decrepated
+
+Deconvolution:
+ - mlsdeconv
+ - sweepdeconv
+
+Post-processing:
+ - rbaBassRatio
+ - rbaCentreTime
+ - rbaClarity
+ - rbaDefinition
+ - rbaEDT
+ - rbaEarlyLateralEnergy
+ - rbaLateLateralEnergy
+ - rbaEarlySupport
+ - rbaLateSupport
+ - rbaStrength
+ - rbaRevTime
+ - rbaIR2OctBands
+ - rbaIR2ThirdOctBands
+ - rbaLundeby
+ - rbaStartIR

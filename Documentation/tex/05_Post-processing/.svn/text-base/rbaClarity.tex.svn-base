@@ -1,0 +1,53 @@
+%!TEX root = ../../master.tex
+
+\chapter{rbaClarity} % (fold)
+\label{cha:rbaClarity} % Insert function name
+
+\section{Purpose} % (fold)
+\label{sec:rbaClarity_purpose}
+
+% A short description of the purpose of the function
+
+Calculates Clarity (e.g $C_{30}$ or $C_{80}$) from impulse response, according to ISO 3382-1:2009 %cite
+
+% section purpose (end)
+
+\section{Syntax} % (fold)
+\label{sec:rbaClarity_syntax}
+
+% How is it called in MATLAB
+
+\texttt{C = rbaClarity(h,fs,time)}
+
+% section syntax (end)
+
+\section{Algorithm} % (fold)
+\label{sec:rbaClarity_algorithm}
+
+% (OPTIONAL) Which algorithm for calculation is used.
+
+The clarity parameter is calculated according to ISO-3382-1
+
+\begin{equation}
+    C_{t_e} = 10 \log \frac{\int_0^{t_e}h^2(t)\mathrm{d}t}{\int_{t_e}^\infty h^2(t)\mathrm{d}t} \SI{}{dB}
+\end{equation}
+where $t_e$ is the input time constant, and $h(t)$ is the room implulse response of interest.
+
+% section algorithm (end)
+
+\section{See Also} % (fold)
+\label{sec:rbaClarity_see_also}
+
+% Similar or related functions
+\texttt{\nameref{cha:rbaCentreTime}},\quad \texttt{\nameref{cha:rbaDefinition}},\quad \texttt{\nameref{cha:rbaEDT}},\quad \texttt{\nameref{cha:rbaReverberationTime}}.
+% section see_also (end)
+
+\section{References} % (fold)
+\label{sec:rbaClarity_references}
+
+% \usepackage{chapterbib}
+ISO 3382-1:2009
+
+% section references (end)
+
+% chapter function_name (end)
